@@ -4,5 +4,10 @@
 }
 
 .navbar-nav {
-  float: inline-end;
+  position: relative;
+  left:700px;
+}
+
+.navbar h1{
+  margin-left:40px;
 }
