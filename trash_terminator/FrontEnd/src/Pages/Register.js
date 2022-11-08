@@ -26,13 +26,15 @@ const RegisterPage = () => {
     //console.log(send);
 
     const response = await fetch(
-      "https://tapwaste.herokuapp.com/posts/signup",
+      "http://localhost:5000/posts/signup",
       {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: send,
       }
     );
+    console.log(response.satus);
+    console.log(send);
     if (response.status === 200) {
       //console.log("Registered Successfull");
       history.push("/login");
