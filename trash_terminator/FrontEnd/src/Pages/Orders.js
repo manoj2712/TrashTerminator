@@ -11,7 +11,7 @@ function OrdersPage() {
       let userData;
       try {
         const response = await fetch(
-          "https://tapwaste.herokuapp.com/posts/orders"
+          "http://localhost:5000/posts/orders"
         );
         userData = await response.json();
         //console.log(userData.order);

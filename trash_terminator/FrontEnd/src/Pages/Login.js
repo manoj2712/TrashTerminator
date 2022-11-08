@@ -10,8 +10,8 @@ const LoginPage = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const send = JSON.stringify({ email: email, password: password });
-    //console.log(send);
-    const response = await fetch("https://localhost:5000/posts/login", {
+    console.log(send);
+    const response = await fetch("http://localhost:5000/posts/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: send,
