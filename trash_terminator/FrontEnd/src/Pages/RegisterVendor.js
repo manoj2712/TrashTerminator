@@ -24,7 +24,7 @@ const RegisterVendorPage = () => {
     });
 
     const response = await fetch(
-      "https://tapwaste.herokuapp.com/posts/vendor/signup",
+      "http://localhost:5000/posts/vendor/signup",
       {
         method: "post",
         headers: { "Content-Type": "application/json" },
