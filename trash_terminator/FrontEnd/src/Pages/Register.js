@@ -31,8 +31,8 @@ const RegisterPage = () => {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: send,
-      }
-    );
+      } 
+    ); 
     console.log(response.satus);
     console.log(send);
     if (response.status === 200) {
