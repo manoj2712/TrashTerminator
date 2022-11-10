@@ -12,7 +12,7 @@ const LoginPage = () => {
     event.preventDefault();
     const send = JSON.stringify({ email: email, password: password });
     //console.log(send);
-    const response = await fetch("https://tapwaste.herokuapp.com/posts/login", {
+    const response = await fetch("http://localhost:5000/posts/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: send,
@@ -21,9 +21,9 @@ const LoginPage = () => {
       const res = await response.json();
       sessionStorage.setItem("btoken", res.accessToken);
       sessionStorage.setItem("usertype", "USER");
-      //console.log("Login Successfull");
       history.push("/");
       window.location.reload(false);
+      alert("Login Successfull");
     } else {
       //console.log(response);
       alert("Email or Password wrong!!");

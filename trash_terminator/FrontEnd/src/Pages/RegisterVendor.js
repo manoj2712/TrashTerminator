@@ -23,14 +23,11 @@ const RegisterVendorPage = () => {
       password: password,
     });
 
-    const response = await fetch(
-      "https://tapwaste.herokuapp.com/posts/vendor/signup",
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: send,
-      }
-    );
+    const response = await fetch("http://localhost:5000/posts/vendor/signup", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: send,
+    });
     if (response.status === 200) {
       // console.log("Registered Vendor Successfull");
       history.push("/loginvendor");
