@@ -45,7 +45,17 @@ function App() {
   return (
     <>
       <NavigationBar />
-      <Routing />
+      <div
+        className="main-body"
+        style={{
+          margin: "5px",
+          padding: "10px",
+          backgroundColor: "rgb(199, 232, 250, 0.55)",
+          borderRadius: "20px",
+        }}
+      >
+        <Routing />
+      </div>
     </>
   );
 }

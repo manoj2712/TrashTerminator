@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from "./Login.module.css";
 import { useHistory } from "react-router-dom";
+import { Row } from "react-bootstrap";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -10,8 +11,8 @@ const LoginPage = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const send = JSON.stringify({ email: email, password: password });
-    console.log(send);
-    const response = await fetch("http://localhost:5000/posts/login", {
+    //console.log(send);
+    const response = await fetch("https://tapwaste.herokuapp.com/posts/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: send,
@@ -34,7 +35,7 @@ const LoginPage = () => {
       <div className={classes.contactForm}>
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          <p>Username</p>
+          <p>Email</p>
           <input
             type="text"
             name=""
@@ -45,7 +46,7 @@ const LoginPage = () => {
           <input
             type="password"
             name=""
-            placeholder="Enter Password"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <p>
@@ -57,16 +58,41 @@ const LoginPage = () => {
         <div>
           <p>
             {" "}
-            <a href="/register" style={{ color: "yellow" }}>
-              New user to Tap Waste? Sign up here
+            <a href="/register" style={{ color: "skyblue" }}>
+              Sign up
             </a>
           </p>
           <p>
             {" "}
-            <a href="/loginvendor" style={{ color: "yellow" }}>
-              login/signup for vendors
+            <a href="/loginvendor" style={{ color: "skyblue" }}>
+              Login/Sign-Up for Vendors
             </a>
           </p>
+          <Row id="footer" className="d-flex justify-content-center mt-5">
+            <i
+              className="social-icon fab fa-facebook-f"
+              style={{ marginRight: 20, color: "#49b7f4" }}
+            >
+              {" "}
+            </i>
+            <i
+              className="social-icon fab fa-twitter"
+              style={{ marginRight: 20, color: "#49b7f4" }}
+            >
+              {" "}
+            </i>
+            <i
+              className="social-icon fab fa-instagram"
+              style={{ marginRight: 20, color: "#49b7f4" }}
+            >
+              {" "}
+            </i>
+          </Row>
+          <Row className="d-flex justify-content-center mt-2 mb-1">
+            <h6 style={{ color: "#49b7f4" }}>
+              © Copyright 2022 Trash Terminator
+            </h6>
+          </Row>
         </div>
       </div>
     </div>

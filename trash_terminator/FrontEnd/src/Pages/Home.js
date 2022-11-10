@@ -31,7 +31,7 @@ const homePage = () => {
         </Row>
 
         <Row className="d-flex justify-content-center">
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={SegregateImg} />
             <h4 className={classes.serviceHead}>1. Segregate</h4>
             <p className={classes.servicePara}>
@@ -39,7 +39,7 @@ const homePage = () => {
               so it saves your time during pickup!
             </p>
           </div>
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={ScheduleImg} />
             <h4 className={classes.serviceHead}>2. Schedule</h4>
             <p className={classes.servicePara}>
@@ -47,18 +47,19 @@ const homePage = () => {
               segregated waste from your doorstep!
             </p>
           </div>
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={EncashImg} />
             <h4 className={classes.serviceHead}>3. Encash</h4>
             <p className={classes.servicePara}>
               Cash for your Trash is instantly given to you by the collector.
             </p>
           </div>
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <span>
               <i
                 className="fa fa-recycle"
                 style={{
+                  backgroundColor: "white",
                   fontSize: 190,
                   marginTop: 32,
                   marginBottom: 32,
@@ -78,7 +79,7 @@ const homePage = () => {
         </Row>
 
         <Row id="items" className="d-flex justify-content-center">
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={Newspaper} />
             <h4 className={classes.itemHead}>All sorts of Papers</h4>
             <ul>
@@ -88,7 +89,7 @@ const homePage = () => {
               <li> Packing Materials</li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={Metal} />
             <h4 className={classes.itemHead}>All sorts of Metal</h4>
             <ul>
@@ -99,7 +100,7 @@ const homePage = () => {
               <li> Electric Wire</li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={Plastic} />
             <h4 className={classes.itemHead}>All sorts of Plastics</h4>
             <ul>
@@ -108,7 +109,7 @@ const homePage = () => {
               <li>Other plastic materials</li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-6 text-center">
+          <div className="card col-lg-3 col-md-6 text-center">
             <Image src={Ewaste} />
             <h4 className={classes.itemHead}>All sorts of E-waste</h4>
             <ul>
@@ -121,25 +122,27 @@ const homePage = () => {
         <Row id="footer" className="d-flex justify-content-center mt-5">
           <i
             className="social-icon fab fa-facebook-f"
-            style={{ marginRight: 20, color: "green" }}
+            style={{ marginRight: 20, color: "#49B7F4" }}
           >
             {" "}
           </i>
           <i
             className="social-icon fab fa-twitter"
-            style={{ marginRight: 20, color: "green" }}
+            style={{ marginRight: 20, color: "#49B7F4" }}
           >
             {" "}
           </i>
           <i
             className="social-icon fab fa-instagram"
-            style={{ marginRight: 20, color: "green" }}
+            style={{ marginRight: 20, color: "#49B7F4" }}
           >
             {" "}
           </i>
         </Row>
         <Row className="d-flex justify-content-center mt-2 mb-1">
-          <h6 style={{ color: "green" }}>© Copyright 2021 Tap Waste</h6>
+          <h6 style={{ color: "#49B7F4" }}>
+            © Copyright 2022 Trash Terminator
+          </h6>
         </Row>
       </Container>
     </div>

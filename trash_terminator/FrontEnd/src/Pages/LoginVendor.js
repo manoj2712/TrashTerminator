@@ -14,7 +14,7 @@ const LoginVendorPage = () => {
     const send = JSON.stringify({ email: email, password: password });
     //console.log(send);
     const response = await fetch(
-      "http://localhost:5000/posts/vendor/login",
+      "https://tapwaste.herokuapp.com/posts/vendor/login",
       {
         method: "post",
         headers: { "Content-Type": "application/json" },

@@ -113,7 +113,7 @@ class CartPage extends Component {
       return;
     }
     Axios.post(
-      "http://localhost:5000/posts/addOrder",
+      "https://tapwaste.herokuapp.com/posts/addOrder",
       {
         amount: this.state.estimatedPrice,
         acquired: false,
@@ -148,13 +148,13 @@ class CartPage extends Component {
             id="services"
             className="d-flex justify-content-center text-center"
           >
-            <h2 className={classes.head}>Add what you want to sell!!</h2>
+            <h2 className={classes.head}>Select your Waste</h2>
           </Row>
 
           <Row className="d-flex justify-content-center">
             <div className="item col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Newspaper</h5>
-              <h5>(in kg)</h5>
+              <h5>(in units)</h5>
               <Image src={NewsImg} />
               <ProductControl
                 disabled={disableInfo["paper"]}
@@ -168,7 +168,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>CardBoard</h5>
-              <h5>(in kg)</h5>
+              <h5>(in units)</h5>
               <Image src={BoxImg} />
               <ProductControl
                 disabled={disableInfo["cardboard"]}
@@ -184,7 +184,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Books</h5>
-              <h5>(in kg)</h5>
+              <h5>(in units)</h5>
               <Image src={BookImg} />
               <ProductControl
                 disabled={disableInfo["books"]}
@@ -198,7 +198,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center">
               <h5 className={classes.itemHead}>Mixed Plastic</h5>
-              <h5>(in kg)</h5>
+              <h5>(in units)</h5>
               <Image src={PlasticImg} />
               <ProductControl
                 disabled={disableInfo["plastic"]}
@@ -214,7 +214,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Aluminium</h5>
-              <h5>(in kg)</h5>
+              <h5>(in units)</h5>
               <Image src={AluImg} />
               <ProductControl
                 disabled={disableInfo["aluminium"]}
@@ -290,7 +290,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>E-Waste</h5>
-              <h5>(in kg)</h5>
+              <h5>(in units)</h5>
               <Image src={EwasteImg} />
               <ProductControl
                 disabled={disableInfo["ewaste"]}
@@ -337,7 +337,7 @@ class CartPage extends Component {
           <div className="col text-center mb-4">
             <Button
               href="/"
-              variant="success"
+              color="#49b7f4"
               size="lg"
               onClick={this.handleButtonClick}
             >
@@ -347,25 +347,27 @@ class CartPage extends Component {
           <Row id="footer" className="d-flex justify-content-center mt-5">
             <i
               className="social-icon fab fa-facebook-f"
-              style={{ marginRight: 20, color: "green" }}
+              style={{ marginRight: 20, color: "#49b7f4" }}
             >
               {" "}
             </i>
             <i
               className="social-icon fab fa-twitter"
-              style={{ marginRight: 20, color: "green" }}
+              style={{ marginRight: 20, color: "#49b7f4" }}
             >
               {" "}
             </i>
             <i
               className="social-icon fab fa-instagram"
-              style={{ marginRight: 20, color: "green" }}
+              style={{ marginRight: 20, color: "#49b7f4" }}
             >
               {" "}
             </i>
           </Row>
           <Row className="d-flex justify-content-center mt-2 mb-1">
-            <h6 style={{ color: "green" }}>© Copyright 2021 Tap Waste</h6>
+            <h6 style={{ color: "#49b7f4" }}>
+              © Copyright 2022 Trash Terminator
+            </h6>
           </Row>
         </Container>
       </div>
