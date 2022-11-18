@@ -33,6 +33,68 @@ const PRODUCT_PRICES = {
   lcd: 700,
 };
 
+const itemPlaced = [
+  {
+    item_name: "paper",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "cardboard",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "books",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "plastic",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "aluminium",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "ac",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "fridge",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "washing machine",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "battery",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "ewaste",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "cpu",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "lcd",
+    item_unit: 0,
+    item_price: 15,
+  },
+];
 const productTypes = {
   paper: "paper",
   cardboard: "cardboard",
@@ -69,7 +131,6 @@ class CartPage extends Component {
     },
     estimatedPrice: 0,
   };
-
   // database logic
   //write here
 
@@ -81,6 +142,11 @@ class CartPage extends Component {
     };
     updatedProducts[type] = newCount;
     const priceAddition = PRODUCT_PRICES[type];
+    for (let i = 0; i < 12; i++) {
+      if (itemPlaced[i].item_name === type) {
+        itemPlaced[i].item_unit++;
+      }
+    }
     const oldPrice = this.state.estimatedPrice;
     const newPrice = oldPrice + priceAddition;
     this.setState({ estimatedPrice: newPrice, products: updatedProducts });
@@ -97,6 +163,11 @@ class CartPage extends Component {
     };
     updatedProducts[type] = newCount;
     const priceDeduction = PRODUCT_PRICES[type];
+    for (let i = 0; i < 12; i++) {
+      if (itemPlaced[i].item_name === type) {
+        itemPlaced[i].item_unit--;
+      }
+    }
     const oldPrice = this.state.estimatedPrice;
     const newPrice = oldPrice - priceDeduction;
     this.setState({ estimatedPrice: newPrice, products: updatedProducts });
@@ -108,15 +179,14 @@ class CartPage extends Component {
       alert("Please Login to place an order!!");
       return;
     }
-    if (this.state.estimatedPrice <= 100) {
-      alert("Order value must be greater than 100.");
-      return;
-    }
+    console.log(itemPlaced);
     Axios.post(
       "http://localhost:5000/posts/addOrder",
       {
         amount: this.state.estimatedPrice,
+        items: this.itemPlaced,
         acquired: false,
+        sentences: "Send Order",
       },
       {
         headers: { Authorization: `Bearer ${token}` },
