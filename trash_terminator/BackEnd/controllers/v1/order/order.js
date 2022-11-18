@@ -4,6 +4,7 @@ const User = require("../../../models/User.js");
 
 const addItem = async function (req, res) {
   var userId;
+
   if (req.headers && req.headers.authorization) {
     var authorization = req.headers.authorization.split(" ")[1],
       decoded;
@@ -19,7 +20,10 @@ const addItem = async function (req, res) {
   }
   const amount = req.body.amount;
   const acquired = req.body.acquired;
-
+  const items = req.body.items;
+  const sentence = req.body.sentences;
+  console.log(sentence);
+  console.log(amount);
   let owner;
   owner = await User.findById(userId);
   //console.log(owner);
@@ -28,6 +32,8 @@ const addItem = async function (req, res) {
     amount: amount,
     acquired: acquired,
     owner: owner,
+    items: items,
+    sentences: sentence,
   });
   item
     .save()
