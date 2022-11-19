@@ -6,7 +6,6 @@ import classes from "./OrderCard.module.css";
 const SocialCard = ({ userData }) => {
   const [color, setColor] = useState("primary");
   const [buttonText, setbuttonText] = useState("Available");
-
   function lockButtonClicked() {
     if (buttonText === "Available") {
       Axios.patch(
@@ -64,6 +63,22 @@ const SocialCard = ({ userData }) => {
         </div>
         <div className={classes.phoneNumber}>
           <p>Mobile No. : {userData.owner.phone}</p>
+        </div>
+        <div className={classes.list}>
+          <table className="table table-bordered">
+            <tr>
+              <th>Items</th>
+              <th>Unit</th>
+              <th>Price</th>
+            </tr>
+            {userData.items.map((item) => (
+              <tr key={item._id}>
+                <td>{item.item_name.toUpperCase()}</td>
+                <td>{item.item_unit}</td>
+                <td>Rs {item.item_price}</td>
+              </tr>
+            ))}
+          </table>
         </div>
         <p>Estimate Amount : Rs. {userData.amount}</p>
         <Button variant={color} onClick={lockButtonClicked}>

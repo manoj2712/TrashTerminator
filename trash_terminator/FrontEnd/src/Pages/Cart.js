@@ -17,20 +17,26 @@ import BatteryImg from "../assets/images/starter.png";
 import EwasteImg from "../assets/images/iphone.png";
 import CaseImg from "../assets/images/cpu.png";
 import LcdImg from "../assets/images/lcd.png";
+import GlassImg from "../assets/images/glassImg.png";
+import OtherImg from "../assets/images/otherImg.png";
+import RubberImg from "../assets/images/rubberImg.png";
 
 const PRODUCT_PRICES = {
-  paper: 6,
-  cardboard: 8,
-  books: 5,
-  plastic: 7,
-  aluminium: 50,
+  paper: 15,
+  cardboard: 12,
+  books: 12,
+  plastic: 10,
+  aluminium: 75,
   ac: 1000,
   fridge: 500,
   washingmachine: 700,
   battery: 100,
-  ewaste: 70,
-  cpu: 1200,
+  ewaste: 12,
+  cpu: 120,
   lcd: 700,
+  glass: 50,
+  rubber: 70,
+  other: 4,
 };
 
 const productTypes = {
@@ -46,7 +52,88 @@ const productTypes = {
   ewaste: "ewaste",
   cpu: "cpu",
   lcd: "lcd",
+  glass: "glass",
+  rubber: "rubber",
+  other: "other",
 };
+
+const itemPlaced = [
+  {
+    item_name: "paper",
+    item_unit: 0,
+    item_price: 15,
+  },
+  {
+    item_name: "cardboard",
+    item_unit: 0,
+    item_price: 12,
+  },
+  {
+    item_name: "books",
+    item_unit: 0,
+    item_price: 12,
+  },
+  {
+    item_name: "plastic",
+    item_unit: 0,
+    item_price: 10,
+  },
+  {
+    item_name: "aluminium",
+    item_unit: 0,
+    item_price: 75,
+  },
+  {
+    item_name: "ac",
+    item_unit: 0,
+    item_price: 1000,
+  },
+  {
+    item_name: "fridge",
+    item_unit: 0,
+    item_price: 500,
+  },
+  {
+    item_name: "washing machine",
+    item_unit: 0,
+    item_price: 700,
+  },
+  {
+    item_name: "battery",
+    item_unit: 0,
+    item_price: 100,
+  },
+  {
+    item_name: "ewaste",
+    item_unit: 0,
+    item_price: 12,
+  },
+  {
+    item_name: "cpu",
+    item_unit: 0,
+    item_price: 120,
+  },
+  {
+    item_name: "lcd",
+    item_unit: 0,
+    item_price: 700,
+  },
+  {
+    item_name: "glass",
+    item_unit: 0,
+    item_price: 50,
+  },
+  {
+    item_name: "rubber",
+    item_unit: 0,
+    item_price: 70,
+  },
+  {
+    item_name: "other",
+    item_unit: 0,
+    item_price: 4,
+  },
+];
 
 const token = sessionStorage.getItem("btoken");
 // const token = localStorage.getItem("btoken");
@@ -66,6 +153,9 @@ class CartPage extends Component {
       ewaste: 0,
       cpu: 0,
       lcd: 0,
+      glass: 0,
+      rubber: 0,
+      other: 0,
     },
     estimatedPrice: 0,
   };
@@ -84,6 +174,11 @@ class CartPage extends Component {
     const oldPrice = this.state.estimatedPrice;
     const newPrice = oldPrice + priceAddition;
     this.setState({ estimatedPrice: newPrice, products: updatedProducts });
+    for (let i = 0; i < 15; i++) {
+      if (itemPlaced[i].item_name === type) {
+        itemPlaced[i].item_unit++;
+      }
+    }
   };
 
   removeProductHandler = (type) => {
@@ -100,6 +195,11 @@ class CartPage extends Component {
     const oldPrice = this.state.estimatedPrice;
     const newPrice = oldPrice - priceDeduction;
     this.setState({ estimatedPrice: newPrice, products: updatedProducts });
+    for (let i = 0; i < 15; i++) {
+      if (itemPlaced[i].item_name === type) {
+        itemPlaced[i].item_unit--;
+      }
+    }
   };
 
   handleButtonClick = (event) => {
@@ -112,11 +212,17 @@ class CartPage extends Component {
       alert("Order value must be greater than 100.");
       return;
     }
+
+    const finalPlaced = itemPlaced.filter((item) => {
+      return item.item_unit > 0;
+    });
+    console.log(finalPlaced);
     Axios.post(
       "http://localhost:5000/posts/addOrder",
       {
         amount: this.state.estimatedPrice,
         acquired: false,
+        items: finalPlaced,
       },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -154,7 +260,7 @@ class CartPage extends Component {
           <Row className="d-flex justify-content-center">
             <div className="item col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Newspaper</h5>
-              <h5>(in units)</h5>
+              <h5>(Rs 15/Kg)</h5>
               <Image src={NewsImg} />
               <ProductControl
                 disabled={disableInfo["paper"]}
@@ -168,7 +274,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>CardBoard</h5>
-              <h5>(in units)</h5>
+              <h5>(Rs 12/Kg)</h5>
               <Image src={BoxImg} />
               <ProductControl
                 disabled={disableInfo["cardboard"]}
@@ -184,7 +290,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Books</h5>
-              <h5>(in units)</h5>
+              <h5>(Rs 12/Kg)</h5>
               <Image src={BookImg} />
               <ProductControl
                 disabled={disableInfo["books"]}
@@ -198,7 +304,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center">
               <h5 className={classes.itemHead}>Mixed Plastic</h5>
-              <h5>(in units)</h5>
+              <h5>(Rs 10/Kg)</h5>
               <Image src={PlasticImg} />
               <ProductControl
                 disabled={disableInfo["plastic"]}
@@ -214,7 +320,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Aluminium</h5>
-              <h5>(in units)</h5>
+              <h5>(Rs 75/Kg)</h5>
               <Image src={AluImg} />
               <ProductControl
                 disabled={disableInfo["aluminium"]}
@@ -230,7 +336,9 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>AC</h5>
-              <h5>(in units)</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 1000/Unit)
+              </h5>
               <Image src={AcImg} />
               <ProductControl
                 disabled={disableInfo["ac"]}
@@ -244,7 +352,9 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Refrigerator</h5>
-              <h5>(in units)</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 500/Unit)
+              </h5>
               <Image src={FridgeImg} />
               <ProductControl
                 disabled={disableInfo["fridge"]}
@@ -258,7 +368,9 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Washing Machine</h5>
-              <h5>(in units)</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 700/Unit)
+              </h5>
               <Image src={WashingImg} />
               <ProductControl
                 disabled={disableInfo["washingmachine"]}
@@ -274,7 +386,9 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>Battery</h5>
-              <h5>(in units)</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 100/Unit)
+              </h5>
               <Image src={BatteryImg} />
               <ProductControl
                 disabled={disableInfo["battery"]}
@@ -290,7 +404,7 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>E-Waste</h5>
-              <h5>(in units)</h5>
+              <h5>(Rs 12/Kg)</h5>
               <Image src={EwasteImg} />
               <ProductControl
                 disabled={disableInfo["ewaste"]}
@@ -304,7 +418,9 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>CPU</h5>
-              <h5>(in units)</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 120/Unit)
+              </h5>
               <Image src={CaseImg} />
               <ProductControl
                 disabled={disableInfo["cpu"]}
@@ -318,7 +434,9 @@ class CartPage extends Component {
 
             <div className="col-lg-4 col-md-6 text-center mb-5">
               <h5 className={classes.itemHead}>LCD-LED</h5>
-              <h5>(in units)</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 700/Unit)
+              </h5>
               <Image src={LcdImg} />
               <ProductControl
                 disabled={disableInfo["lcd"]}
@@ -326,6 +444,50 @@ class CartPage extends Component {
                 productAdded={() => this.addProductHandler(productTypes.lcd)}
                 productRemoved={() =>
                   this.removeProductHandler(productTypes.lcd)
+                }
+              />
+            </div>
+
+            <div className="col-lg-4 col-md-6 text-center mb-5">
+              <h5 className={classes.itemHead}>Glass</h5>
+              <h5>(Rs 50/Kg)</h5>
+              <Image src={GlassImg} />
+              <ProductControl
+                disabled={disableInfo["glass"]}
+                number={this.state.products.glass}
+                productAdded={() => this.addProductHandler(productTypes.glass)}
+                productRemoved={() =>
+                  this.removeProductHandler(productTypes.glass)
+                }
+              />
+            </div>
+
+            <div className="col-lg-4 col-md-6 text-center mb-5">
+              <h5 className={classes.itemHead}>Rubber</h5>
+              <h5>(Rs 70/Kg)</h5>
+              <Image src={RubberImg} />
+              <ProductControl
+                disabled={disableInfo["rubber"]}
+                number={this.state.products.rubber}
+                productAdded={() => this.addProductHandler(productTypes.rubber)}
+                productRemoved={() =>
+                  this.removeProductHandler(productTypes.rubber)
+                }
+              />
+            </div>
+
+            <div className="col-lg-4 col-md-6 text-center mb-5">
+              <h5 className={classes.itemHead}>Other</h5>
+              <h5>
+                <span style={{ color: "red" }}>*</span>(Rs 4/Kg)
+              </h5>
+              <Image src={OtherImg} />
+              <ProductControl
+                disabled={disableInfo["other"]}
+                number={this.state.products.other}
+                productAdded={() => this.addProductHandler(productTypes.other)}
+                productRemoved={() =>
+                  this.removeProductHandler(productTypes.other)
                 }
               />
             </div>
@@ -368,6 +530,12 @@ class CartPage extends Component {
             <h6 style={{ color: "#49b7f4" }}>
               © Copyright 2022 Trash Terminator
             </h6>
+          </Row>
+
+          <Row className="d-flex justify-content-center mt-2 mb-1">
+            <h5 style={{ fontSize: 12, color: "red", margin: 0 }}>
+              *Price may vary according to the type of Scrap
+            </h5>
           </Row>
         </Container>
       </div>

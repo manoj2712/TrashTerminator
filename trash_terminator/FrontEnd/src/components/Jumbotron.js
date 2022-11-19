@@ -10,8 +10,8 @@ const Jumbotron = () => (
         <p>
           <b>
             {" "}
-            <span style={{ color: "grey" }}>Trash</span>{" "}
-            <span style={{ color: "#49b7f4" }}>Terminator</span>{" "}
+            <span style={{ color: "#49b7f4" }}>Trash</span>{" "}
+            <span style={{ color: "darkgrey" }}>Terminator</span>{" "}
           </b>
         </p>
       </h1>

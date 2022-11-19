@@ -19,6 +19,7 @@ const addItem = async function (req, res) {
   }
   const amount = req.body.amount;
   const acquired = req.body.acquired;
+  const itemsP = req.body.items;
 
   let owner;
   owner = await User.findById(userId);
@@ -28,6 +29,7 @@ const addItem = async function (req, res) {
     amount: amount,
     acquired: acquired,
     owner: owner,
+    items: itemsP,
   });
   item
     .save()

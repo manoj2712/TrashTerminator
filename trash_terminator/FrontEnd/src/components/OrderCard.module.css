@@ -37,3 +37,10 @@
   font-size: 0.8rem;
   margin: 0;
 }
+
+.list {
+  margin: 10;
+  width: auto;
+  height: auto;
+  font-size: small;
+}
