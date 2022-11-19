@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../../../models/User.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const register = async function (req, res) {
   const name = req.body.name;
   let email = req.body.email;

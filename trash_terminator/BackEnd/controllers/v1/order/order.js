@@ -4,6 +4,7 @@ const User = require("../../../models/User.js");
 
 const addItem = async function (req, res) {
   var userId;
+
   if (req.headers && req.headers.authorization) {
     var authorization = req.headers.authorization.split(" ")[1],
       decoded;
@@ -29,7 +30,6 @@ const addItem = async function (req, res) {
     amount: amount,
     acquired: acquired,
     owner: owner,
-    items: itemsP,
   });
   item
     .save()
