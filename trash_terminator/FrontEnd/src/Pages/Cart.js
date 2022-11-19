@@ -94,7 +94,7 @@ const itemPlaced = [
     item_price: 500,
   },
   {
-    item_name: "washing machine",
+    item_name: "washingmachine",
     item_unit: 0,
     item_price: 700,
   },
