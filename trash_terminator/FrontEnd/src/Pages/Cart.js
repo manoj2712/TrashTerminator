@@ -170,11 +170,6 @@ class CartPage extends Component {
     };
     updatedProducts[type] = newCount;
     const priceAddition = PRODUCT_PRICES[type];
-    for (let i = 0; i < 15; i++) {
-      if (itemPlaced[i].item_name === type) {
-        itemPlaced[i].item_unit++;
-      }
-    }
     const oldPrice = this.state.estimatedPrice;
     const newPrice = oldPrice + priceAddition;
     this.setState({ estimatedPrice: newPrice, products: updatedProducts });
@@ -196,11 +191,6 @@ class CartPage extends Component {
     };
     updatedProducts[type] = newCount;
     const priceDeduction = PRODUCT_PRICES[type];
-    for (let i = 0; i < 15; i++) {
-      if (itemPlaced[i].item_name === type) {
-        itemPlaced[i].item_unit--;
-      }
-    }
     const oldPrice = this.state.estimatedPrice;
     const newPrice = oldPrice - priceDeduction;
     this.setState({ estimatedPrice: newPrice, products: updatedProducts });

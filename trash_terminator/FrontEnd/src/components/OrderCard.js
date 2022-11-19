@@ -69,18 +69,18 @@ const SocialCard = ({ userData }) => {
             <tr>
               <th>Items</th>
               <th>Unit</th>
-              <th>Price</th>
+              <th>Price/Unit</th>
             </tr>
             {userData.items.map((item) => (
               <tr key={item._id}>
                 <td>{item.item_name.toUpperCase()}</td>
                 <td>{item.item_unit}</td>
-                <td>Rs {item.item_price}</td>
+                <td>Rs. {item.item_price}</td>
               </tr>
             ))}
           </table>
         </div>
-        <p>Estimate Amount : Rs. {userData.amount}</p>
+        <p>Estimated Amount : Rs. {userData.amount}</p>
         <Button variant={color} onClick={lockButtonClicked}>
           {buttonText}
         </Button>
