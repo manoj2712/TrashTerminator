@@ -30,6 +30,7 @@ const addItem = async function (req, res) {
     amount: amount,
     acquired: acquired,
     owner: owner,
+    items: itemsP,
   });
   item
     .save()

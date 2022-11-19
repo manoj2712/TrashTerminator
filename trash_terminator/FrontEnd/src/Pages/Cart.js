@@ -170,7 +170,7 @@ class CartPage extends Component {
     };
     updatedProducts[type] = newCount;
     const priceAddition = PRODUCT_PRICES[type];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 15; i++) {
       if (itemPlaced[i].item_name === type) {
         itemPlaced[i].item_unit++;
       }
@@ -196,7 +196,7 @@ class CartPage extends Component {
     };
     updatedProducts[type] = newCount;
     const priceDeduction = PRODUCT_PRICES[type];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 15; i++) {
       if (itemPlaced[i].item_name === type) {
         itemPlaced[i].item_unit--;
       }
@@ -230,7 +230,7 @@ class CartPage extends Component {
       "http://localhost:5000/posts/addOrder",
       {
         amount: this.state.estimatedPrice,
-        items: this.itemPlaced,
+        items: finalPlaced,
         acquired: false,
       },
       {
