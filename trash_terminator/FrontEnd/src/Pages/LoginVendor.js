@@ -61,7 +61,7 @@ const LoginVendorPage = () => {
           <p>
             {" "}
             <a href="/registervendor" style={{ color: "yellow" }}>
-              New Vendor to Tap Waste? Sign up here
+              Sign up
             </a>
           </p>
         </div>
