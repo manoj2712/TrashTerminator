@@ -20,7 +20,7 @@ mongoose
   .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
+  }) 
   .then(() =>
     app.listen(PORT, () => console.log(`server running on port: ${PORT}`))
   )
