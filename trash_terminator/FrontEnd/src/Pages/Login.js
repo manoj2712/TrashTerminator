@@ -12,11 +12,14 @@ const LoginPage = () => {
     event.preventDefault();
     const send = JSON.stringify({ email: email, password: password });
     //console.log(send);
-    const response = await fetch("http://localhost:5000/posts/login", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: send,
-    });
+    const response = await fetch(
+      "https://indore-trash-terminator.herokuapp.com/posts/login",
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: send,
+      }
+    );
     if (response.status === 200) {
       const res = await response.json();
       sessionStorage.setItem("btoken", res.accessToken);

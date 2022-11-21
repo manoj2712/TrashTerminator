@@ -10,7 +10,9 @@ function OrdersPage() {
     (async () => {
       let userData;
       try {
-        const response = await fetch("http://localhost:5000/posts/orders");
+        const response = await fetch(
+          "https://indore-trash-terminator.herokuapp.com/posts/orders"
+        );
         userData = await response.json();
         //console.log(userData.order);
       } catch (error) {

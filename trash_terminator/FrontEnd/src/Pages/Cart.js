@@ -217,7 +217,7 @@ class CartPage extends Component {
     });
     console.log(finalPlaced);
     Axios.post(
-      "http://localhost:5000/posts/addOrder",
+      "https://indore-trash-terminator.herokuapp.com/posts/addOrder",
       {
         amount: this.state.estimatedPrice,
         items: finalPlaced,
